@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { generate, count } from 'random-words';
-import DICTIONARY from "../../datasets/wordDictionary.json"
+import { generate } from 'random-words';
+import DICTIONARY from "../../datasets/wordDictionary.json";
+import Hangman from './Hangman';
 
 const MAX_GUESSES = 6;
 
@@ -14,9 +15,8 @@ const HangmanGame = () => {
     const [gameWon, setGameWon] = useState(false);
 
     useEffect(() => {
-        // console.log("ugjg")
         const randomWord = generate(1)[0];
-        const randomHint = handleGetDefinition(randomWord)//randomWord.length > 5 ? 'Long word' : 'Short word';
+        const randomHint = handleGetDefinition(randomWord);
         setWord(randomWord.toLowerCase());
         setHiddenWord('_'.repeat(randomWord.length));
         setGuessedLetters([]);
@@ -25,9 +25,7 @@ const HangmanGame = () => {
         setGameWon(false);
     }, []);
 
-
     useEffect(() => {
-        // console.log("ugjg", word, hiddenWord, hiddenWord === word)
         if (word.length > 0) {
             if (hiddenWord === word) {
                 setGameWon(true);
@@ -39,8 +37,8 @@ const HangmanGame = () => {
     }, [hiddenWord, word, remainingGuesses]);
 
     const handleGetDefinition = (word) => {
-        const wordDefinition = DICTIONARY[word]
-        setHint(getFirstSentence(wordDefinition))
+        const wordDefinition = DICTIONARY[word];
+        setHint(getFirstSentence(wordDefinition));
     };
 
     function getFirstSentence(str = "") {
@@ -70,9 +68,8 @@ const HangmanGame = () => {
 
     const handleRestart = () => {
         const randomWord = generate(1)[0];
-        const randomHint = handleGetDefinition(randomWord)
+        const randomHint = handleGetDefinition(randomWord);
         setWord(randomWord.toLowerCase());
-        // setHint(randomHint);
         setHiddenWord('_'.repeat(randomWord.length));
         setGuessedLetters([]);
         setRemainingGuesses(MAX_GUESSES);
@@ -110,10 +107,10 @@ const HangmanGame = () => {
         ));
     };
 
-    console.log(gameWon)
     return (
         <div>
-            <h1>Hangman Game</h1>
+            <h2>Save Man by Word</h2>
+            <Hangman wrongGuesses={MAX_GUESSES - remainingGuesses} />
             {!gameOver ? (
                 <>
                     <p>{`Remaining Guesses: ${remainingGuesses}`}</p>

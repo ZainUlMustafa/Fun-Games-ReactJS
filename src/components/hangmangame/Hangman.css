@@ -24,7 +24,7 @@
     left: 50%;
     width: 6px;
     height: 100%;
-    background-color: #333;
+    background-color: rgba(0,0,0,0.0);
     transform: translateX(-50%);
 }
 
@@ -82,7 +82,7 @@
 }
 
 .animate {
-    animation: hangman-animation 0.5s ease-in-out forwards;
+    animation: hangman-animation 1005s ease-in-out forwards;
 }
 
 @keyframes hangman-animation {
@@ -92,5 +92,42 @@
 
     100% {
         opacity: 1;
+    }
+}
+
+/* SAD */
+.hangman-container.sad .hangman-parts {
+    opacity: 0.5;
+}
+
+.hangman-container.sad .hangman-part {
+    animation: none;
+    transition: transform 0.5s ease;
+    transform: rotate(90deg);
+}
+
+/* .hangman-part {
+    width: 20px;
+    height: 50px;
+    background-color: #333;
+    margin: 4px;
+    transition: background-color 0.3s ease;
+} */
+
+.hangman-part.animate {
+    animation: blink 2.5s infinite;
+}
+
+@keyframes blink {
+    0% {
+        background-color: #333;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: #333;
     }
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import HangmanGame from './hangman/HangmanGame';
+import HangmanGame from './hangmangame/HangmanGame';
 
 function Home() {
   const [gameKey, setGameKey] = useState("-1")
@@ -9,18 +9,18 @@ function Home() {
       component: <></>
     },
     "0": {
-      name: "Hangman",
-      desc: "Guess the word",
+      name: "Save Man by Word",
+      desc: "Guess the correct word and save the man",
       component: <HangmanGame />
     }
   }
 
   const gameComponent = gameKey === "-1" ? <></> : <>
-    {games[gameKey].component}
+    <div style={{textAlign: 'center'}}>{games[gameKey].component}</div>
 
     <div style={{ padding: '20px' }}></div>
     <hr />
-    <p role='button' style={{ cursor: 'pointer' }} onClick={() => { setGameKey("-1") }}>Play another game</p>
+    <p role='button' style={{ cursor: 'pointer' }} onClick={() => { setGameKey("-1") }}>{'>'} Play another game</p>
   </>
 
   const gameSelection = gameKey !== "-1" ? <></> : <>
