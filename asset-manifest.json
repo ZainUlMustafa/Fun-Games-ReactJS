@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/fun-games-reactjs/static/css/main.073c9b0a.css",
+    "main.js": "/fun-games-reactjs/static/js/main.470d7b4b.js",
+    "static/js/787.758f469a.chunk.js": "/fun-games-reactjs/static/js/787.758f469a.chunk.js",
+    "index.html": "/fun-games-reactjs/index.html",
+    "main.073c9b0a.css.map": "/fun-games-reactjs/static/css/main.073c9b0a.css.map",
+    "main.470d7b4b.js.map": "/fun-games-reactjs/static/js/main.470d7b4b.js.map",
+    "787.758f469a.chunk.js.map": "/fun-games-reactjs/static/js/787.758f469a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.470d7b4b.js"
+  ]
+}
