@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import HangmanGame from '../components/hangman/hangman';
+import HangmanGame from './hangman/HangmanGame';
 
 function Home() {
   const [gameKey, setGameKey] = useState("-1")
