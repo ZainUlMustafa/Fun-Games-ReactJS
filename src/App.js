@@ -14,13 +14,13 @@ const contentStyle = {
 
 const headerStyle = {
   backgroundColor: '#f5f5f5',
-  padding: '20px',
+  padding: '14px',
   textAlign: 'center',
 };
 
 const footerStyle = {
   backgroundColor: '#f5f5f5',
-  padding: '20px',
+  padding: '14px',
   textAlign: 'center',
   marginTop: 'auto',
 };
@@ -29,7 +29,7 @@ function App() {
   return (
     <div style={appStyle}>
       <header style={headerStyle}>
-        <h1>Fun and Simple Games</h1>
+        <h2>Fun and Simple Games</h2>
       </header>
       <div style={contentStyle}>
         {/* Add your app's main content */}

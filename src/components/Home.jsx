@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import HangmanGame from './hangmangame/HangmanGame';
+import SnakeGame from './snakegame/SnakeGame';
 
 function Home() {
   const [gameKey, setGameKey] = useState("-1")
@@ -12,6 +13,11 @@ function Home() {
       name: "Save Man by Word",
       desc: "Guess the correct word and save the man",
       component: <HangmanGame />
+    },
+    "1": {
+      name: "Snake eats apple",
+      desc: "An apple a day keeps snake growing",
+      component: <SnakeGame />
     }
   }
 
@@ -29,7 +35,7 @@ function Home() {
     {Object.entries(games).filter(([key, value]) => key !== "-1").map(([key, value], i) => {
       return <div key={key} role="button" style={{ cursor: 'pointer' }} onClick={() => { setGameKey(key) }}>
         <span>{i + 1}. {value.name}</span>
-        <span style={{ paddingLeft: '10px' }}><i>({value.desc})</i></span>
+        <span style={{ paddingLeft: '5px' }}><i>({value.desc})</i></span>
       </div>
     })}
   </>
