@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const ROWS = 20;
 const COLS = 20;
-const CELL_SIZE = 30;
+const CELL_SIZE = 22;
 const DIRECTIONS = {
     UP: 'UP',
     DOWN: 'DOWN',
     LEFT: 'LEFT',
     RIGHT: 'RIGHT',
 };
-const INITIAL_SPEED = 100;
+const INITIAL_SPEED = 200;
 
 const getRandomFoodPosition = () => {
     return {
@@ -49,18 +49,20 @@ const SnakeGame = () => {
 
     const handleKeyDown = (event) => {
         const { key } = event;
-        if (key === 'ArrowUp' && direction !== DIRECTIONS.DOWN) {
-            event.preventDefault();
-            setDirection(DIRECTIONS.UP);
-        } else if (key === 'ArrowDown' && direction !== DIRECTIONS.UP) {
-            event.preventDefault();
-            setDirection(DIRECTIONS.DOWN);
-        } else if (key === 'ArrowLeft' && direction !== DIRECTIONS.RIGHT) {
-            event.preventDefault();
-            setDirection(DIRECTIONS.LEFT);
-        } else if (key === 'ArrowRight' && direction !== DIRECTIONS.LEFT) {
-            event.preventDefault();
-            setDirection(DIRECTIONS.RIGHT);
+        if (!isGameOver) {
+            if (key === 'ArrowUp' && direction !== DIRECTIONS.DOWN) {
+                event.preventDefault();
+                setDirection(DIRECTIONS.UP);
+            } else if (key === 'ArrowDown' && direction !== DIRECTIONS.UP) {
+                event.preventDefault();
+                setDirection(DIRECTIONS.DOWN);
+            } else if (key === 'ArrowLeft' && direction !== DIRECTIONS.RIGHT) {
+                event.preventDefault();
+                setDirection(DIRECTIONS.LEFT);
+            } else if (key === 'ArrowRight' && direction !== DIRECTIONS.LEFT) {
+                event.preventDefault();
+                setDirection(DIRECTIONS.RIGHT);
+            }
         }
     };
 
@@ -141,7 +143,7 @@ const SnakeGame = () => {
     };
 
     const handleDirectionButtonClick = (newDirection) => {
-        setDirection(newDirection);
+        if (!isGameOver) { setDirection(newDirection); }
     };
 
     useEffect(() => {
@@ -172,10 +174,10 @@ const SnakeGame = () => {
                 </div>
             </div>
             {isGameOver ? <></> : <div style={{ marginTop: '20px' }}>
-                <button onClick={() => handleDirectionButtonClick(DIRECTIONS.LEFT)}>Left</button>
-                <button onClick={() => handleDirectionButtonClick(DIRECTIONS.UP)}>Up</button>
-                <button onClick={() => handleDirectionButtonClick(DIRECTIONS.DOWN)}>Down</button>
-                <button onClick={() => handleDirectionButtonClick(DIRECTIONS.RIGHT)}>Right</button>
+                <button style={{padding: '20px'}} onClick={() => handleDirectionButtonClick(DIRECTIONS.LEFT)}>Left</button>
+                <button style={{padding: '20px'}} onClick={() => handleDirectionButtonClick(DIRECTIONS.UP)}>Up</button>
+                <button style={{padding: '20px'}} onClick={() => handleDirectionButtonClick(DIRECTIONS.DOWN)}>Down</button>
+                <button style={{padding: '20px'}} onClick={() => handleDirectionButtonClick(DIRECTIONS.RIGHT)}>Right</button>
             </div>
             }
             <p style={{ fontSize: '20px' }}>Score: {score}</p>
